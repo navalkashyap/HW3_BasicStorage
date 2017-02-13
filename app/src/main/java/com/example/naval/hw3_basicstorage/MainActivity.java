@@ -9,6 +9,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -31,7 +32,8 @@ public class MainActivity extends AppCompatActivity {
      * See https://g.co/AppIndexing/AndroidStudio for more information.
      */
     private GoogleApiClient client;
-
+    String fileName = "abc";
+    EditText fname;
     /**
      *
      */
@@ -42,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        fname = (EditText) findViewById(R.id.ImageName);
 
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -57,11 +60,13 @@ public class MainActivity extends AppCompatActivity {
         Bitmap bitmapImage = BitmapFactory.decodeResource(getResources(), R.drawable.crime_alert);
         ContextWrapper cw = new ContextWrapper(getApplicationContext());
 
+        // get file name
+        fileName = fname.getText().toString();
         // Create imageDir
         File directory = cw.getDir("imageDir", Context.MODE_PRIVATE);
 
         // Create path to image
-        File mypath = new File(directory, "abc.png");
+        File mypath = new File(directory, fileName+".png");
 
         FileOutputStream fos = null;
         try {
@@ -79,14 +84,14 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         filePath = directory.getAbsolutePath();
-        Toast.makeText(this,"Image Saved",Toast.LENGTH_LONG).show();
+        Toast.makeText(this,"Image "+fileName+" Saved @"+directory,Toast.LENGTH_LONG).show();
     }
 
 
     public void loadFile(View view) {
 
         try {
-            File f = new File(filePath, "abc.png");
+            File f = new File(filePath, fileName+".png");
             Bitmap b = BitmapFactory.decodeStream(new FileInputStream(f));
             ImageView img = (ImageView) findViewById(R.id.imageView1);
             img.setImageBitmap(b);
