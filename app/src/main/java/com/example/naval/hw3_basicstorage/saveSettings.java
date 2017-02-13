@@ -11,24 +11,24 @@ import android.widget.Toast;
 
 public class saveSettings extends AppCompatActivity {
 
-    EditText userName;
-    EditText password;
-    TextView dataView;
+    EditText uName;
+    EditText pwd;
+    TextView dView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_save_settings);
 
-        userName = (EditText) findViewById(R.id.userNameInput);
-        password = (EditText) findViewById(R.id.passwordInput);
-        dataView = (TextView) findViewById(R.id.dataTextView);
+        uName = (EditText) findViewById(R.id.userNameInput);
+        pwd = (EditText) findViewById(R.id.passwordInput);
+        dView = (TextView) findViewById(R.id.dataTextView);
     }
     public void saveData(View view){
         SharedPreferences loginData = getSharedPreferences("userInfo", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = loginData.edit();
-        editor.putString("userName", userName.getText().toString());
-        editor.putString("password", password.getText().toString());
+        editor.putString("UserName", uName.getText().toString());
+        editor.putString("Password", pwd.getText().toString());
         editor.apply();
 
         Toast.makeText(this,"Saved",Toast.LENGTH_LONG).show();
@@ -36,9 +36,9 @@ public class saveSettings extends AppCompatActivity {
 
     public void getData(View view){
         SharedPreferences loginData = getSharedPreferences("userInfo", Context.MODE_PRIVATE);
-        String name = loginData.getString("userName", "");
-        String pw = loginData.getString("password","");
+        String name = loginData.getString("UserName", "");
+        String pw = loginData.getString("Password","");
         String msg = "Saved User Name: " + name + "\nSaved Password: " + pw;
-        dataView.setText(msg);
+        dView.setText(msg);
     }
 }
