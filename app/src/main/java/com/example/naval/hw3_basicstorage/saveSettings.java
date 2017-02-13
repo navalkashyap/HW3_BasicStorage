@@ -11,24 +11,24 @@ import android.widget.Toast;
 
 public class saveSettings extends AppCompatActivity {
 
-    EditText uName;
-    EditText pwd;
-    TextView dView;
+    EditText userName;
+    EditText password;
+    TextView dataView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_save_settings);
 
-        uName = (EditText) findViewById(R.id.userNameInput);
-        pwd = (EditText) findViewById(R.id.passwordInput);
-        dView = (TextView) findViewById(R.id.dataTextView);
+        userName = (EditText) findViewById(R.id.userNameInput);
+        password = (EditText) findViewById(R.id.passwordInput);
+        dataView = (TextView) findViewById(R.id.dataTextView);
     }
     public void saveData(View view){
         SharedPreferences loginData = getSharedPreferences("userInfo", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = loginData.edit();
-        editor.putString("Noti_freq", uName.getText().toString());
-        editor.putString("API_freq", pwd.getText().toString());
+        editor.putString("userName", userName.getText().toString());
+        editor.putString("password", password.getText().toString());
         editor.apply();
 
         Toast.makeText(this,"Saved",Toast.LENGTH_LONG).show();
@@ -36,9 +36,9 @@ public class saveSettings extends AppCompatActivity {
 
     public void getData(View view){
         SharedPreferences loginData = getSharedPreferences("userInfo", Context.MODE_PRIVATE);
-        String name = loginData.getString("Noti_freq", "");
-        String pw = loginData.getString("API_freq","");
-        String msg = "Saved Notification Frequency: " + name + "\nSaved API Call Frequency: " + pw;
-        dView.setText(msg);
+        String name = loginData.getString("userName", "");
+        String pw = loginData.getString("password","");
+        String msg = "Saved User Name: " + name + "\nSaved Password: " + pw;
+        dataView.setText(msg);
     }
 }
