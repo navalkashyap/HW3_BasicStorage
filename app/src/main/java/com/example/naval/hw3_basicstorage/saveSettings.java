@@ -27,8 +27,8 @@ public class saveSettings extends AppCompatActivity {
     public void saveData(View view){
         SharedPreferences loginData = getSharedPreferences("userInfo", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = loginData.edit();
-        editor.putString("UserName", uName.getText().toString());
-        editor.putString("Password", pwd.getText().toString());
+        editor.putString("Noti_freq", uName.getText().toString());
+        editor.putString("API_freq", pwd.getText().toString());
         editor.apply();
 
         Toast.makeText(this,"Saved",Toast.LENGTH_LONG).show();
@@ -36,9 +36,9 @@ public class saveSettings extends AppCompatActivity {
 
     public void getData(View view){
         SharedPreferences loginData = getSharedPreferences("userInfo", Context.MODE_PRIVATE);
-        String name = loginData.getString("UserName", "");
-        String pw = loginData.getString("Password","");
-        String msg = "Saved User Name: " + name + "\nSaved Password: " + pw;
+        String name = loginData.getString("Noti_freq", "");
+        String pw = loginData.getString("API_freq","");
+        String msg = "Saved Notification Frequency: " + name + "\nSaved API Call Frequency: " + pw;
         dView.setText(msg);
     }
 }

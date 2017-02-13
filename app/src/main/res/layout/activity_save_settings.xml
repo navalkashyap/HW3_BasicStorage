@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="User Name"
+        android:text="Notification Frequency"
         android:id="@+id/textView"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
@@ -24,7 +24,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Password"
+        android:text="API Call Frequency"
         android:id="@+id/textView2"
         android:layout_below="@+id/textView"
         android:layout_alignParentLeft="true"
@@ -38,7 +38,11 @@
         android:layout_alignBottom="@+id/textView2"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:width="200dp" />
+        android:width="200dp"
+        android:layout_toRightOf="@+id/dataTextView"
+        android:layout_toEndOf="@+id/dataTextView"
+        android:inputType="number"
+        style="@style/Widget.AppCompat.AutoCompleteTextView" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -47,7 +51,11 @@
         android:layout_alignBottom="@+id/textView"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:width="200dp" />
+        android:width="200dp"
+        android:layout_toRightOf="@+id/dataTextView"
+        android:layout_toEndOf="@+id/dataTextView"
+        style="@style/Widget.AppCompat.AutoCompleteTextView"
+        android:inputType="number" />
 
     <Button
         android:layout_width="wrap_content"
